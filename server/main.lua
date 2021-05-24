@@ -21,6 +21,9 @@ end)
 
 RegisterServerEvent('frobski-gps:Installed')
 AddEventHandler('frobski-gps:Installed', function(plate)
+    local xPlayer = ESX.GetPlayerFromId(source)
+    xPlayer.removeInventoryItem('gps', 1)
+
     MySQL.Async.execute("UPDATE owned_vehicles SET gps=@gps WHERE plate=@plate", {
         ['@plate'] = plate, 
         ['@gps'] = 'true',
