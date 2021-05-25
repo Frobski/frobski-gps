@@ -139,6 +139,7 @@ install = function()
 
 	if not installing then
 		repeat
+			installing = true
 			block = true
 			local coords = GetEntityCoords(PlayerPedId())
 			Wait(5)
@@ -146,6 +147,7 @@ install = function()
 			time = time + 0.005
 	    until(time >= Config.Time)
         
+		installing = false
 		block = false
 		gps = true
 		Notif('success', Config.Strings["installed"])
